@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	var titleId = 'title' + sessionStorage.getItem('idOfClicked');
 	var title = sessionStorage.getItem(titleId);
@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('title').html(title);
 
 	var url = window.location.href;
-	
+
 	//Get the id of the clicked recipe
 	var id = url.split('?')[1].split('=')[1];
 
@@ -76,7 +76,7 @@ $(document).ready(function() {
 	var instructionLi;
 
 	for (var i = 0; i < stepsParsed[0].steps.length; i++) {
-		var isNumber =  /^\d+$/.test(stepsParsed[0].steps[i].step);
+		var isNumber = /^\d+$/.test(stepsParsed[0].steps[i].step);
 		if (isNumber) {
 			continue;
 		}
@@ -104,14 +104,14 @@ $(document).ready(function() {
 	var j = 1;
 	var ingredientLi;
 	var ingArray = [];
-
+	
 	// Create array containing recipes (remove all duplicates)
 	for (var k = 0; k < stepsParsed[0].steps.length; k++) {
-		for (var a = 0; a < stepsParsed[0].steps[k].ingredients.length; a++) {		
-			if (k == 0 && a == 0){
+		for (var a = 0; a < stepsParsed[0].steps[k].ingredients.length; a++) {
+			if (k == 0 && a == 0) {
 				ingArray.push(stepsParsed[0].steps[k].ingredients[a].name);
 			} else {
-				if ($.inArray(stepsParsed[0].steps[k].ingredients[a].name, ingArray) == -1){
+				if ($.inArray(stepsParsed[0].steps[k].ingredients[a].name, ingArray) == -1) {
 					ingArray.push(stepsParsed[0].steps[k].ingredients[a].name);
 				}
 			}
@@ -119,7 +119,7 @@ $(document).ready(function() {
 	};
 
 	// Append all ingredients from array created above to ingredientsUl
-	for (var i = 0; i < ingArray.length; i++){
+	for (var i = 0; i < ingArray.length; i++) {
 		ingredientLi = $('<li/>')
 			.addClass('ingredientLi')
 			.html(ingArray[i]);
@@ -131,8 +131,5 @@ $(document).ready(function() {
 	ingredients.append(ingredientsUl);
 	description.append(ingredients);
 	description.append(instructions);
-
-
-
 
 })
