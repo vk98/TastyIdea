@@ -48,7 +48,7 @@ function main() {
 		recipeDiv = $("<div>")
 			.addClass("recipeBlock")
 			.attr("id", i)
-			.click(function(){ console.log("pederas",this.recipe );handleOpenRecipe(this.recipe);}.bind({recipe: i}));
+			.click(function(){handleOpenRecipe(this.recipe);}.bind({recipe: i}));;
 
 		//Create spans to contain name of dish; and create and append the actual name of dish to said span
 		name = $("<span/>")
