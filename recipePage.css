@@ -22,12 +22,11 @@ nav{
 #logo{
 	font-size: 60px;
 	font-weight: 700;
-	color: #0099FF;
+	color: rgba(32, 31, 32, 0.97);
 	margin: 0;
-	display: block;
 	text-decoration: none;
-	color: #292f33;
-	font-family: Pacifico;
+	font-family: 'Oleo Script', cursive;
+
 }
 
 #logoImg{
