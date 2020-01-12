@@ -9,6 +9,7 @@ var inputVal = document.getElementById('ingredientsInput').value;
 var listCounter = 1;
 
 function main() {
+	sessionStorage.clear();
 	//Create API parameters based on ingredients inputed
 	let foodsString = ingredientsCollection.join();
 	var upToIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=';
@@ -46,7 +47,8 @@ function main() {
 		//Create divs so you get a div for each recipe
 		recipeDiv = $("<div>")
 			.addClass("recipeBlock")
-			.attr("id", i);
+			.attr("id", i)
+			.click(function(){ console.log("pederas",this.recipe );handleOpenRecipe(this.recipe);}.bind({recipe: i}));
 
 		//Create spans to contain name of dish; and create and append the actual name of dish to said span
 		name = $("<span/>")
@@ -222,4 +224,9 @@ function autocomplete(inp, arr) {
 	document.addEventListener("click", function (e) {
 		closeAllLists(e.target);
 	});
+}
+
+function handleOpenRecipe(id){
+	sessionStorage.setItem('idOfClicked', id);
+	console.log("yahoo")
 }
