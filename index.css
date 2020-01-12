@@ -34,7 +34,7 @@ nav{
 }
 
 #formContainer{
-	width: 700px;
+	width: 45%;
 	height: 280px;
 	margin: auto;
   	position: absolute;
@@ -50,6 +50,10 @@ nav{
 	cursor: default;
 }
 
+.ingredientsNote{
+
+}
+
 #inputFields{
 	text-align: center;
 }
@@ -63,6 +67,7 @@ nav{
 	font-weight: 600;
 	color: #292f33;
 	letter-spacing: 1.3px;
+	text-align: center;
 	background: transparent;
 	border: 0;
 	border-style: solid;
@@ -86,7 +91,7 @@ nav{
 	letter-spacing: 1.3px;
 }
 
-#search{
+#button{
 	width: 200px;
 	height: 60px;
 	margin-top: 30px;
@@ -94,6 +99,7 @@ nav{
 	background-color: #c1b17d;
 	border-style: none;
 	color: white;
+	float: right;
 	font-weight: 700;
 	font-size: 25px;
 	letter-spacing: 1.8px;
@@ -101,11 +107,11 @@ nav{
 	transition: background 0.5s;
 }
 
-#search:hover{
+#button:hover{
 	background-color: rgba(41, 47, 51, 0.7);
 }
 
-#search:active{
+#button:active{
 	background-color: rgba(41, 47, 51, 0);
 }
 
@@ -118,16 +124,21 @@ nav{
 }
 
 .recipeContainer{
-	padding-top: 20px;
-	overflow: auto;
+	display: flex;                       
+  	flex-wrap: wrap;                     
+  	justify-content: space-around;
+	/*padding-top: 20px;
+	overflow: auto;*/
 }
 
 .recipeBlock{
 	margin: 15px;
-	border-color: : #c1b17d;
+	border-color: #c1b17d;
 	border-width: 5px;
 	box-sizing: border-box;
-	width: 300px;
+	width: 30%;
+	height: 400px;
+	flex: 0 0 32%;
 	border-radius: 5px;
 	color: #292f33;
 	border-style: solid;
@@ -159,6 +170,7 @@ nav{
 
 .ingredientsMissing{
 	padding: 10px;
+	display: initial;
 }
 
 .likes{
@@ -176,18 +188,9 @@ nav{
 	width: 100%;
 }
 
-/*AUTOCOMPLETE STYLING*/
-* {
-	box-sizing: border-box;
-  }
-  
-body {
-	font: 16px Arial;  
-}
-
 .autocomplete {
   position: relative;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 input {
   border: 1px solid transparent;

@@ -9,37 +9,33 @@
 
 <body>
 	<section class="top">
-		<nav>
-			<div id="navContainer">
-				<a href="index.html" id="logo">tastyIdea.</a>
-			</div>
-			<div>
+		<section class="top">
+			<nav>
+				<div id="navContainer">
+					<a href="index.html" id="logo">tastyIdea.</a>
+				</div>
+			</nav>
+		<div class="headerContainer" style="display: flex;justify-content: normal;">
+			<div style="display: flex;position: relative;width: 20%;">
 				<ul id="notes">
 					<li>
 						<p>Ingredients List: </p>
 					</li>
 				</ul>
 			</div>
-		</nav>
-
-		<div id="formContainer">
-			<p id="inputFields">
-				<span id='formTitle'>Welcome to TastyIdea. Enter the ingredients you have in your fridge and let us show
-					you what you can cook.</span>
-				<div class="autocomplete">
-					<input id="ingredientsInput" type="text" class="input" placeholder="What's in your fridge?"></input>
-					<br>
-				</div>
+	
+			<div id="formContainer">
+				<p id="inputFields">
+					<span id="formTitle" class="">Welcome to TastyIdea. Enter the ingredients you have in your fridge and let us show
+						you what you can cook.</span>
+					</p><div class="autocomplete">
+						<input id="ingredientsInput" type="text" class="input" placeholder="What's in your fridge?">
+						<br>
 				<div id="buttons">
-					<button type="submit" id="search" onclick="add()" style="margin-left: 40px;"
-						data-loading-text="Adding...">Add</button>
-					<button type="submit" id="search" onclick="main()" style="margin-left: 40px;"
-						data-loading-text="Searching...">Search</button>
-				</div>
-			</p>
-			<div id="selectedFoodsList">
-
-			</div>
+						<button type="submit" id="button" onclick="add()" style="margin-left: 40px; float: left;" data-loading-text="Adding...">Add</button>
+						<button type="submit" id="button" onclick="main()" style="margin-left: 40px; float: right;" data-loading-text="Searching...">Search</button>
+					</div>
+					</div>
 		</div>
 	</section>
 
