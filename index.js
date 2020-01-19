@@ -13,7 +13,7 @@ function main() {
 	//Create API parameters based on ingredients inputed
 	let foodsString = ingredientsCollection.join();
 	var upToIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=';
-	var afterIngredients = '&number=200&limitLicense=false&fillIngredients=true&ranking=1&limitLicense=false&mashape-key=btSAgzlS6CmshxyNyEh24vDF8sl2p1w43h9jsnCABHsQZSfxx6'
+	var afterIngredients = '&number=9&limitLicense=false&fillIngredients=true&ranking=1&limitLicense=false&mashape-key=btSAgzlS6CmshxyNyEh24vDF8sl2p1w43h9jsnCABHsQZSfxx6'
 
 	//Get recipes for specific ingredients from API 
 	var searchByIngredients = new XMLHttpRequest();
@@ -23,6 +23,18 @@ function main() {
 	//Parse what API returns (in JSON)
 	var recipes = JSON.parse(searchByIngredients.response);
 
+
+	var recipeDetaisString = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/";
+	var afterRecipeDetaisString = "/nutritionWidget.json?limitLicense=false&mashape-key=btSAgzlS6CmshxyNyEh24vDF8sl2p1w43h9jsnCABHsQZSfxx6";
+	for(let r of recipes){
+		//Get recipes details
+		r.details = new XMLHttpRequest();
+		r.details.open("GET", recipeDetaisString + r.id + afterRecipeDetaisString , false);
+		r.details.send();
+		r.details = JSON.parse(r.details.response);
+	}
+	
+
 	//Create arrays for HTML creation
 	var recipeDiv;
 	var ingredientsMissing;
@@ -31,7 +43,7 @@ function main() {
 	var description;
 	var descriptionText;
 	var clickPart;
-	var likes;
+	var calories;
 
 	recipeWrapper = document.createElement("div");
 	recipeWrapper.setAttribute("class", "recipeWrapper");
@@ -42,6 +54,8 @@ function main() {
 	if (document.getElementsByClassName("recipeWrapper") !== null) {
 		$(".recipeWrapper").remove();
 	}
+
+	recipes = recipes.sort((a,b)=> a.missedIngredients.length - b.missedIngredients.length)
 
 	for (var i = 0; i < recipes.length; i++) {
 		//Create divs so you get a div for each recipe
@@ -78,10 +92,14 @@ function main() {
 				}
 			}
 		};
-
-		//Create divs to contain number of likes
-		likes = $("<div/>").addClass("likes");
-		likes.html("<b>Likes</b> " + recipes[i].likes);
+		console.log(recipes[i]);
+		//Create divs to contain number of calories
+		calories = $("<div/>").addClass("calories");
+		calories.html(`<b>calories:</b> ${recipes[i].details.calories}<br>
+		<b>fat:</b> ${recipes[i].details.fat}<br>
+		<b>carbs:</b> ${recipes[i].details.carbs}<br>
+		<b>proteins:</b> ${recipes[i].details.protein}
+		`);
 
 		//Create anchor tags to make the recipe blocks clickable
 		clickPart = $("<a/>").addClass("clickPart");
@@ -92,7 +110,7 @@ function main() {
 		recipeDiv.append(clickPart)
 			.append(name)
 			.append(img)
-			.append(likes)
+			.append(calories)
 			.append(ingredientsMissing);
 
 		//Append recipe blocks to container
@@ -228,5 +246,4 @@ function autocomplete(inp, arr) {
 
 function handleOpenRecipe(id){
 	sessionStorage.setItem('idOfClicked', id);
-	console.log("yahoo")
 }

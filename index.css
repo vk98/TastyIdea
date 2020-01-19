@@ -121,7 +121,6 @@ nav{
 #search:active{
 	background-color: rgba(41, 47, 51, 0);
 }
-
 .recipeWrapper{
 	/*top: calc(100vh - 121px);*/
 	margin: 0 auto;
@@ -131,22 +130,29 @@ nav{
 }
 
 .recipeContainer{
-	padding-top: 20px;
-	overflow: auto;
+	display: flex;                       
+  	flex-wrap: wrap;                     
+  	justify-content: space-around;
+	/*padding-top: 20px;
+	overflow: auto;*/
 }
 
 .recipeBlock{
 	margin: 15px;
+	border-color: #c1b17d;
+	border-width: 5px;
 	box-sizing: border-box;
-	width: 300px;
+	width: 30%;
+	height: 500px;
+	flex: 0 0 32%;
 	border-radius: 5px;
 	color: #292f33;
-	border: 5px solid #c1b17d;
+	border-style: solid;
 	transition: border-color 0.2s ease;
 }
 
 .img{
-	max-height: 420px;
+	height: 250px;
 	width: 100%;
 
 }
@@ -159,6 +165,8 @@ nav{
 	font-size: 20px;
 	padding: 10px;
 	transition: background-color 0.2s ease;
+	padding-bottom: 10px;
+    min-height: 45px;
 }
 
 .recipeBlock:hover{
@@ -173,7 +181,7 @@ nav{
 	padding: 10px;
 }
 
-.likes{
+.calories{
 	padding: 0px 10px;
 	color: red;
 }
@@ -198,6 +206,7 @@ nav{
 .autocomplete {
   position: relative;
   /*display: inline-block;*/
+  text-align: center;
 }
 input {
   border: 1px solid transparent;
